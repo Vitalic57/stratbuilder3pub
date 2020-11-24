@@ -1,0 +1,8 @@
+*.Rproj
+*.RData
+data-raw/
+.Rproj.user/
+.Rhistory
+.Rbuildignore
+update
+

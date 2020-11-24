@@ -1,0 +1,47 @@
+Package: stratbuilder3pub
+Title: Package Provides Tools to Create and Backtest Financial Models
+Description: Toolkit for building your own trading model.
+ This backtester is very suitable for pair trading. 
+ Spread of instruments can be created and updated during backtest.
+ Indicators can be added to model.
+ Rules for enter and exit from trade also can be added. 
+ Then rules for increase and decrease the position you can add to model. 
+ Perform your model. 
+ Check out base statistics and plot PnL, Drawdowns, Returns for every month.
+ Define parameters of model and calculate models with them.  
+Version: 1.4.2
+Authors@R: person("Vitaly", "Shishkov", ,"vitalic.s@financialracers.com", c("aut", "cre"))
+Depends: R (>= 3.2.3),
+	xts,
+	magrittr, 
+  TTR,
+  stratbuilder3gen
+License: GPL-2 | file LICENSE
+SystemRequirements: 
+	libssh-dev (>=0.7.3-2),
+	libssh-4 (>=0.6.0),
+	libcurl4-openssl-dev (>=7.52.0),
+	libxml2-dev (>=2.9.4)
+Encoding: UTF-8
+LazyData: true
+Imports:
+    zoo,
+    ggplot2,
+    ssh,
+    devtools,
+    utils,
+    corrplot,
+    dplyr,
+    reshape2,
+    lubridate,
+    quantmod,
+    plotly,
+    rlang,
+    pryr,
+    Rcpp
+Suggests:
+	testthat,
+        knitr
+VignetteBuilder: knitr
+RoxygenNote: 7.1.1
+Remotes: Vitalic57/stratbuilder3gen
