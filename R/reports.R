@@ -27,14 +27,19 @@ precalcStat.Strategy <- function(this, s, start, end, recalc){
   if(!is.null(res$s$func)){
     period <- paste('per', start, end, sep = '_')
     if(!is.null(s[['depends']])){
+      nms <- sapply(this$report_stats, "[[", 'name')
       for(x in s[['depends']]){
-        if(is.null(this$report_stats[[x]])){
+        ind <- which(nms == x)[1]
+        if(length(ind) == 0){
           s1 <- acceptable_stats[[x]]
         }else{
-          s1 <- this$report_stats[[x]]
+          s1 <- this$report_stats[[ind]]
         }
         if(is.null(s1)){
           stop(paste('No such stat', x))
+        }
+        if(!is.null(s1$func)){
+          next
         }
         if(!s1$general && (is.null(this$backtest$stats[[period]][[x]]) || res$recalc)){
           send_to_server <- TRUE
@@ -68,7 +73,7 @@ precalcStat.Strategy <- function(this, s, start, end, recalc){
 #' @method getReport Strategy
 #' @rdname getReport
 getReport.Strategy <- function(this, start, end, returns = 'tibble', recalc=FALSE){
-  s <- Stat(func = function(...){}, depends = names(this$report_stats))
+  s <- Stat(func = function(...){}, depends = sapply(this$report_stats, '[[', 'name'))
   start <- get_backtest_start_index(this, start)
   end <- get_backtest_end_index(this, end)
   precalcStat(this, s, start, end, recalc)
@@ -86,3 +91,11 @@ getReport.Strategy <- function(this, start, end, returns = 'tibble', recalc=FALS
 }
 
 
+# #' Get variable acceptable_stats
+# #'
+# #' @export
+# #' @method getAcceptableStats Strategy
+# #' @rdname getAcceptableStats
+# getAcceptableStats.Strategy <- function(this){
+#   return(acceptable_stats)
+# }
