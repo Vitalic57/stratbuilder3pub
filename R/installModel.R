@@ -1,6 +1,6 @@
 installModel <- function(from, target){
   if(inherits(from, 'error') || is.character(from)){
-    stop(e)
+    stop(from)
   }
   if(class(from)[1] == 'Strategy'){
     target$backtest <- from$backtest
