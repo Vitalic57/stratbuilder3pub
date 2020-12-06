@@ -9,7 +9,7 @@ perform.Strategy <- function(this, calc_reports=TRUE, ...){
   }
   session <- .env[['session']]
   l <- list(this=this,
-            request= rlang::call2('perform', quote(this), calc_reports=calc_reports, !!!rlang::enexprs(...)))
+            request= rlang::call2('perform', quote(this), calc_reports=calc_reports, !!!list(...)))
   send_rdata(session, l, verbose=PARAMS('verbose'))
   res <- get_results(session, verbose=PARAMS('verbose'))
   installModel(res, this)

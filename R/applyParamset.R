@@ -9,7 +9,7 @@ applyParamset.Strategy <- function(this,  ...){
   }
   session <- .env[['session']]
   l <- list(this=this,
-            request= rlang::call2('applyParamset', quote(this), parallel = FALSE, !!!rlang::enexprs(...)))
+            request= rlang::call2('applyParamset', quote(this), parallel = FALSE, !!!list(...)))
   send_rdata(session, l, verbose=PARAMS('verbose'))
   res <- get_results(session, verbose=PARAMS('verbose'))
   installModel(res, this)
