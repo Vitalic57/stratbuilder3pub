@@ -73,6 +73,9 @@ precalcStat.Strategy <- function(this, s, start, end, recalc){
 #' @method getReport Strategy
 #' @rdname getReport
 getReport.Strategy <- function(this, start, end, returns = 'tibble', recalc=FALSE){
+  if(is.null(this$backtest)){
+    stop('Please, perform your strategy before calling this method')
+  }
   s <- Stat(func = function(...){}, depends = sapply(this$report_stats, '[[', 'name'))
   start <- get_backtest_start_index(this, start)
   end <- get_backtest_end_index(this, end)

@@ -7,6 +7,9 @@ applyParamset.Strategy <- function(this,  ...){
   if(is.null(.env[['session']])){
     stop('Please, use ssh_connect function before proceeding')
   }
+  if(is.null(this$paramset) || length(this$paramset$distributions) == 0){
+    stop('Please, add distributions')
+  }
   session <- .env[['session']]
   l <- list(this=this,
             request= rlang::call2('applyParamset', quote(this), parallel = FALSE, !!!list(...)))
