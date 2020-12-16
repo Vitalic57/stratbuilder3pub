@@ -7,6 +7,9 @@ perform.Strategy <- function(this, calc_reports=TRUE, ...){
   if(is.null(.env[['session']])){
     stop('Please, use ssh_connect function before proceeding')
   }
+  if(is.null(this$data)){
+    stop('Please, set Data first')
+  }
   session <- .env[['session']]
   l <- list(this=this,
             request= rlang::call2('perform', quote(this), calc_reports=calc_reports, !!!list(...)))

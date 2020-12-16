@@ -3,10 +3,10 @@
 #' Statistic and all dependent statistics will be calculated where possible
 #'
 #' @param this Strategy
-#' @param s
-#' @param start
-#' @param end
-#' @param recalcl
+#' @param s Stat
+#' @param start numeric
+#' @param end numeric
+#' @param recalc logical
 #' @rdname precalcStat
 #' @export
 #' @method precalcStat Strategy
