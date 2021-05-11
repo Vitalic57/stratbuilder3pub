@@ -1,5 +1,9 @@
 #' @export
 Stats <- list(
+    avg.days.in.pos = Stat(
+description = 'Maximum number of days in position',
+name = 'avg.days.in.pos', 
+in_report = TRUE),
     days.in.drawdown = Stat(
 description = 'Maximum days in drawdown',
 name = 'days.in.drawdown', 
@@ -19,6 +23,10 @@ in_report = TRUE),
     in.pos = Stat(
 description = 'Percentage of time in position',
 name = 'in.pos', 
+in_report = TRUE),
+    max.days.in.pos = Stat(
+description = 'Maximum number of days in position',
+name = 'max.days.in.pos', 
 in_report = TRUE),
     max.loose = Stat(
 description = 'Maximum number of loosing trades in a row',
@@ -72,6 +80,11 @@ in_report = TRUE))
 
 #' @export
 acceptable_stats <- list(
+    avg.days.in.pos = Stat(
+description = 'Maximum number of days in position',
+name = 'avg.days.in.pos', 
+in_report = TRUE,
+general = FALSE),
     commission = Stat(
 description = 'Commissions',
 name = 'commission', 
@@ -121,6 +134,11 @@ general = FALSE),
 description = 'Maximum usage of capital',
 name = 'max_used_money', 
 in_report = FALSE,
+general = FALSE),
+    max.days.in.pos = Stat(
+description = 'Maximum number of days in position',
+name = 'max.days.in.pos', 
+in_report = TRUE,
 general = FALSE),
     max.loose = Stat(
 description = 'Maximum number of loosing trades in a row',
