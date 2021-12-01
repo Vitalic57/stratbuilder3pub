@@ -70,6 +70,11 @@ interruptSimulation <- function(session, verbose=TRUE){
 #' @export
 ssh_connect <- function(host, keyfile = NULL, passwd = askpass::askpass, verbose = FALSE){
   .env[['keyfile']] <- keyfile
+  suppressWarnings(suppressMessages({
+    tryCatch({
+      ssh::ssh_disconnect(.env[['session']])
+    }, error = function(e){})
+  }))
   .env[['session']] <- ssh::ssh_connect(host=host, keyfile = keyfile, passwd = passwd, verbose = verbose)
   return(.env[['session']])
 }
